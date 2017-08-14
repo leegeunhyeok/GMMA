@@ -21,7 +21,7 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         SharedPreferences mPref = getSharedPreferences("Setting", Context.MODE_PRIVATE);
-        dsModeOn = mPref.getBoolean("SAVEMODE_SET", true);
+        dsModeOn = mPref.getBoolean("SAVEMODE_SET", false);
 
         boolean status = getWhatKindOfNetwork(this);
 
