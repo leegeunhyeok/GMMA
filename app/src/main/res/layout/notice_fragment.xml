@@ -47,16 +47,6 @@
         android:layout_below="@id/top_btn">
     </ListView>
 
-    <Button
-        android:id="@+id/notice_page_btn"
-        android:padding="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/rounded_button"
-        android:text="웹에서 보기"/>
-
     <ProgressBar
         android:id="@+id/notice_loading"
         android:padding="16dp"
@@ -64,5 +54,14 @@
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/notice_page_btn"
+        android:padding="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="웹에서 보기"/>
 
 </RelativeLayout>

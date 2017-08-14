@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp">
+    android:padding="30dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,6 +24,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_version"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\n소스코드는 Github에 업로드 되어있습니다."/>
 
     <TextView
         android:layout_gravity="center"
@@ -52,5 +57,12 @@
             android:text="다음 티스토리" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/git_btn"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Github" />
 
 </LinearLayout>

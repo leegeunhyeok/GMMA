@@ -32,5 +32,14 @@ public class PopupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btn3 = (Button)findViewById(R.id.git_btn);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/leegeunhyeok/gmma"));
+                startActivity(intent);
+            }
+        });
     }
 }

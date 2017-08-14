@@ -15,7 +15,6 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_centerHorizontal="true"
             android:text="웹에서 보기"/>
 
@@ -24,19 +23,25 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_centerHorizontal="true"
             android:text="새로고침"/>
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/allergy_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/meal_top_layout"
+        android:text="알레르기 정보 확인하기"/>
 
     <ListView
-        android:layout_below="@id/meal_top_layout"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/allergy_info"
         android:id="@+id/meal_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:dividerHeight="5dp"
+        android:dividerHeight="8dp"
         android:divider="#00000000">
     </ListView>
 
@@ -47,4 +52,5 @@
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
 </RelativeLayout>

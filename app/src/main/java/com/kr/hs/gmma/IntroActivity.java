@@ -21,7 +21,7 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
         boolean status = getWhatKindOfNetwork(this);
-        new LunchDataParser(this, "http://www.gmma.hs.kr/wah/main/mobile/schoolmeal/list.htm?menuCode=102");
+        new LunchDataParser(this, "http://stu.goe.go.kr/sts_sci_md00_001.do?schulCode=J100000488&schulCrseScCode=4&schulKndScCode=4");
         new NoticeDataParser(this, "http://www.gmma.hs.kr/wah/main/mobile/bbs/list.htm?menuCode=69&scale=10&searchField=&searchKeyword=&pageNo=", 1);
         if(status){
             msg = "환영합니다";

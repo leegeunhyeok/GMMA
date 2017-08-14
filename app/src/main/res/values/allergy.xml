@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="al_1">1. 난류</string>
+    <string name="al_2">2. 우유</string>
+    <string name="al_3">3. 메밀</string>
+    <string name="al_4">4. 땅콩</string>
+    <string name="al_5">5. 대두</string>
+    <string name="al_6">6. 밀</string>
+    <string name="al_7">7. 고등어</string>
+    <string name="al_8">8. 게</string>
+    <string name="al_9">9. 새우</string>
+    <string name="al_10">10. 돼지고기</string>
+    <string name="al_11">11. 복숭아</string>
+    <string name="al_12">12. 토마토</string>
+    <string name="al_13">13. 아황산류</string>
+    <string name="al_14">14. 호두</string>
+    <string name="al_15">15. 닭고기</string>
+    <string name="al_16">16. 쇠고기</string>
+    <string name="al_17">17. 오징어</string>
+    <string name="al_18">18. 조개류</string>
+</resources>

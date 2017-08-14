@@ -82,7 +82,6 @@ public class NoticeFragment extends Fragment {
         ft.detach(this).attach(this).commit();
     }
 
-
     public void RefreshNotice(){
         page.setText("- " + n_page + " -");
         progress.setVisibility(View.VISIBLE);

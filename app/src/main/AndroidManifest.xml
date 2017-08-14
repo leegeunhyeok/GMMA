@@ -21,5 +21,6 @@
         </activity>
         <activity android:name=".MainActivity"/>
         <activity android:name=".PopupActivity" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
+        <activity android:name=".AllergyActivity" android:theme="@style/Theme.AppCompat.Light.Dialog"/>
     </application>
 </manifest>

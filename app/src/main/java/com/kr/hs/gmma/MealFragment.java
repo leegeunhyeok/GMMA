@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 
 
 public class MealFragment extends Fragment {
-    private Button btn1, btn2;
+    private Button btn1, btn2, btn3;
     private ProgressBar progress;
 
     @Override
@@ -22,6 +22,7 @@ public class MealFragment extends Fragment {
         View view = inflater.inflate(R.layout.meal_fragment, container, false);
         btn1 = (Button)view.findViewById(R.id.refresh_btn);
         btn2 = (Button)view.findViewById(R.id.meal_show_btn);
+        btn3 = (Button)view.findViewById(R.id.allergy_info);
         progress = (ProgressBar)view.findViewById(R.id.meal_loading);
 
         progress.setVisibility(View.GONE);
@@ -41,8 +42,18 @@ public class MealFragment extends Fragment {
                     public void onClick(View v) {
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         Uri u = Uri.parse("http://www.gmma.hs.kr/wah/main/mobile/schoolmeal/list.htm?menuCode=102");
+                        //버튼을 누르면 학교 홈페이지로 이동 (급식정보)
                         i.setData(u);
                         startActivity(i);
+                    }
+                }
+        );
+
+        btn3.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), AllergyActivity.class);
+                        startActivity(intent);
                     }
                 }
         );
@@ -63,6 +74,7 @@ public class MealFragment extends Fragment {
 
     public void RefreshLunch(){
         progress.setVisibility(View.VISIBLE);
-        new LunchDataParser(this, "http://www.gmma.hs.kr/wah/main/mobile/schoolmeal/list.htm?menuCode=102");
+        new LunchDataParser(this, "http://stu.goe.go.kr/sts_sci_md00_001.do?schulCode=J100000488&schulCrseScCode=4&schulKndScCode=4");
+        // 교육청의 급식 데이터 수집
     }
 }

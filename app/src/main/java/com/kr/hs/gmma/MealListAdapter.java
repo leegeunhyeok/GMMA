@@ -50,17 +50,8 @@ public class MealListAdapter extends BaseAdapter {
         return ItemList.get(position) ;
     }
 
-    public void addItem(String date, String week_day, String food_info) {
-        MealListItem item = new MealListItem();
-
-        item.setDate(date);
-        item.setFood_info(food_info);
-
-        ItemList.add(item);
-    }
-
     public void addItems(){
-        for(int i=0; i<7; i++) {
+        for(int i=0; i<5; i++) {
             MealListItem item = new MealListItem();
             item.setDate(LunchDataParser.date_list.get(i));
             item.setFood_info(LunchDataParser.info_list.get(i));
