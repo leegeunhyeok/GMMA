@@ -22,7 +22,7 @@ public class SettingActivity extends AppCompatActivity {
     SharedPreferences.OnSharedPreferenceChangeListener mListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            boolean dsModeON = sharedPreferences.getBoolean(key, true);
+            boolean dsModeON = sharedPreferences.getBoolean(key, false);
             String s = "";
             if(dsModeON){
                 s = "새로고침 버튼을 눌러 수동으로 데이터를 불러올 수 있습니다.";
