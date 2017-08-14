@@ -14,7 +14,7 @@ import android.widget.Button;
  */
 
 public class CommunityFragment extends Fragment {
-    Button page, doje, club, dev, share;
+    Button page, doje, club, dev, share, setting;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -24,6 +24,7 @@ public class CommunityFragment extends Fragment {
         club = (Button)view.findViewById(R.id.student_club_btn);
         dev = (Button)view.findViewById(R.id.dev_info_btn);
         share = (Button)view.findViewById(R.id.share_btn);
+        setting = (Button)view.findViewById(R.id.setting_btn);
 
         page.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
@@ -68,6 +69,14 @@ public class CommunityFragment extends Fragment {
                 msg.putExtra(Intent.EXTRA_TITLE, "공유하기");
                 msg.setType("text/plain");
                 startActivity(Intent.createChooser(msg, "공유하기"));
+            }
+        });
+
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
             }
         });
 
