@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -22,7 +21,7 @@ public class SettingActivity extends AppCompatActivity {
     SharedPreferences.OnSharedPreferenceChangeListener mListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            boolean dsModeON = sharedPreferences.getBoolean(key, false);
+            boolean dsModeON = sharedPreferences.getBoolean(key, false); // 저장된 값이 없으면 기본값 false
             String s = "";
             if(dsModeON){
                 s = "새로고침 버튼을 눌러 수동으로 데이터를 불러올 수 있습니다.";
@@ -59,7 +58,7 @@ public class SettingActivity extends AppCompatActivity {
         });
 
         mPref = getSharedPreferences("Setting", Context.MODE_PRIVATE);
-        boolean isOn = mPref.getBoolean("SAVEMODE_SET", true);
+        boolean isOn = mPref.getBoolean("SAVEMODE_SET", false);
         mPref.registerOnSharedPreferenceChangeListener(mListener);
         sw.setChecked(isOn);
     }
