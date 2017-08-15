@@ -1,50 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <LinearLayout
-        android:id="@+id/meal_top_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/meal_show_btn"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/simple_button"
-            android:layout_marginRight="1dp"
-            android:text="웹에서 보기"/>
-
-        <Button
-            android:id="@+id/refresh_btn"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/simple_button"
-            android:layout_marginLeft="1dp"
-            android:text="새로고침"/>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/allergy_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/meal_top_layout"
-        android:background="@drawable/simple_button"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
-        android:text="알레르기 정보 확인하기"/>
-
     <ListView
         android:layout_marginTop="5dp"
-        android:layout_below="@id/allergy_info"
         android:id="@+id/meal_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,11 +15,65 @@
         android:divider="#00000000">
     </ListView>
 
+    <Button
+        android:id="@+id/fab_meal"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="+"
+        android:textColor="@color/colorBackground"
+        android:textSize="30dp"
+        android:background="@drawable/circle_btn" />
+
+    <com.ogaclejapan.arclayout.ArcLayout
+        android:id="@+id/arc_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        app:arc_origin="bottom|right"
+        app:arc_radius="168dp"
+        app:arc_axisRadius="120dp"
+        app:arc_freeAngle="false"
+        app:arc_reverseAngle="false">
+
+        <Button
+            android:id="@+id/refresh_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:background="@drawable/ic_refresh"
+            android:backgroundTint="@color/colorPrimary"
+            app:arc_origin="center" />
+
+        <Button
+            android:id="@+id/allergy_info"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:background="@drawable/ic_info"
+            android:backgroundTint="@color/colorPrimary"
+            app:arc_origin="center" />
+
+        <Button
+            android:id="@+id/meal_show_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/ic_open_in_browser"
+            app:arc_origin="center" />
+
+    </com.ogaclejapan.arclayout.ArcLayout>
+
     <ProgressBar
         android:id="@+id/meal_loading"
         android:padding="16dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

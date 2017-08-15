@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("홈"));
         tabLayout.addTab(tabLayout.newTab().setText("공지"));
-        //tabLayout.addTab(tabLayout.newTab().setText("학사일정"));
         tabLayout.addTab(tabLayout.newTab().setText("급식표"));
         tabLayout.addTab(tabLayout.newTab().setText("커뮤니티"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -51,17 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                //
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                //
             }
         });
-    }
-
-    public void onClick(View v){
-        // No task
     }
 }

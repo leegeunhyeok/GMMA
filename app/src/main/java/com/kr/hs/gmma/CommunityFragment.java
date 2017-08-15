@@ -1,5 +1,6 @@
 package com.kr.hs.gmma;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -55,8 +56,10 @@ public class CommunityFragment extends Fragment {
 
         dev.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                Bundle bundleAim = ActivityOptions.makeCustomAnimation(getActivity(),
+                        R.anim.slide_up, R.anim.slide_down).toBundle();
                 Intent intent = new Intent(getActivity(), PopupActivity.class);
-                startActivity(intent);
+                startActivity(intent, bundleAim); // 액티비티 호출 시 위로 올라오는 애니메이션 적용
             }
         });
 

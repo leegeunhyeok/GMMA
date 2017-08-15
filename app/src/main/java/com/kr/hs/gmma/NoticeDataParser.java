@@ -21,7 +21,7 @@ public class NoticeDataParser extends AsyncTask<String, String, Boolean> {
     IntroActivity inActivity;
     NoticeFragment fr;
     int date_count = 10, title_count=10;
-    static int page;
+    static int page = 1;
     private boolean Init = true;
 
     public NoticeDataParser(IntroActivity activity, String url, int n){

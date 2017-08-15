@@ -51,6 +51,7 @@ public class MealListAdapter extends BaseAdapter {
     }
 
     public void addItems(){
+        if(LunchDataParser.date_list.size() == 0) return;
         for(int i=0; i<5; i++) {
             MealListItem item = new MealListItem();
             item.setDate(LunchDataParser.date_list.get(i));
