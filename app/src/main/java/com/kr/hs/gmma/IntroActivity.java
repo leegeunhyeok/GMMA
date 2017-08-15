@@ -26,23 +26,19 @@ public class IntroActivity extends AppCompatActivity {
 
         boolean status = getWhatKindOfNetwork(this);
 
-        LunchDataParser.info_list.clear();
-        LunchDataParser.date_list.clear();
-        NoticeDataParser.title_list.clear();
-        NoticeDataParser.date_list.clear();
+        MainActivity.mMealDataset.clear();
+        MainActivity.mNoticeDataset.clear();
 
         if(!dsModeOn){ //데이터 절약모드가 아닐 때 데이터 로딩
             new LunchDataParser(this, "http://stu.goe.go.kr/sts_sci_md00_001.do?schulCode=J100000488&schulCrseScCode=4&schulKndScCode=4");
             new NoticeDataParser(this, "http://www.gmma.hs.kr/wah/main/mobile/bbs/list.htm?menuCode=69&scale=10&searchField=&searchKeyword=&pageNo=", 1);
         } else {
             for(int i=0; i<5; i++){
-                LunchDataParser.date_list.add("[ ]");
-                LunchDataParser.info_list.add("급식 데이터가 없습니다.");
+                MainActivity.mMealDataset.add(new MealListItem("[ ]", "급식 데이터가 없습니다."));
             }
 
             for(int i=0; i<10; i++){
-                NoticeDataParser.date_list.add("[ ]");
-                NoticeDataParser.title_list.add("데이터 없음.");
+                MainActivity.mNoticeDataset.add(new NoticeListItem("[ ]", "표시할 데이터가 없습니다."));
             }
         }
 

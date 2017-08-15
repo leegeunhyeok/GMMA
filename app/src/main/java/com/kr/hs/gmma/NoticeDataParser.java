@@ -16,10 +16,10 @@ import java.util.StringTokenizer;
  */
 
 public class NoticeDataParser extends AsyncTask<String, String, Boolean> {
-    static ArrayList<String> date_list = new ArrayList<>();
-    static ArrayList<String> title_list = new ArrayList<>();
-    IntroActivity inActivity;
-    NoticeFragment fr;
+    private ArrayList<String> date_list = new ArrayList<>();
+    private ArrayList<String> title_list = new ArrayList<>();
+    private IntroActivity inActivity;
+    private NoticeFragment fr;
     int date_count = 10, title_count=10;
     static int page = 1;
     private boolean Init = true;
@@ -73,9 +73,13 @@ public class NoticeDataParser extends AsyncTask<String, String, Boolean> {
             }
 
             for(int i=0; i<title_count; i++){
-                title_list.add("데이터 없음.");
+                title_list.add("표시할 데이터가 없습니다.");
             }
         }
+        for(int i=0; i<date_list.size(); i++){
+            MainActivity.mNoticeDataset.add(new NoticeListItem(date_list.get(i), title_list.get(i)));
+        }
+
         return result;
     }
 

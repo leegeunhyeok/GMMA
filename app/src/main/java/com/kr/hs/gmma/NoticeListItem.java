@@ -8,6 +8,11 @@ public class NoticeListItem {
     private String title;
     private String date;
 
+    public NoticeListItem(String date, String title){
+        this.date = date;
+        this.title = title;
+    }
+
     public void setTitle(String title){
         this.title = title;
     }

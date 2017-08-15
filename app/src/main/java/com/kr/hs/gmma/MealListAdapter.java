@@ -1,62 +1,44 @@
 package com.kr.hs.gmma;
 
-import android.content.Context;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+
+import com.kr.hs.gmma.MainActivity.ViewHolder;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 
 
-public class MealListAdapter extends BaseAdapter {
-    private ArrayList<MealListItem> ItemList = new ArrayList<MealListItem>();
+public class MealListAdapter extends RecyclerView.Adapter<ViewHolder> {
+    private ArrayList<MealListItem> MealDataSet = new ArrayList<>();
 
-    @Override
-    public int getCount(){
-        return ItemList.size();
+    public MealListAdapter(ArrayList<MealListItem> mDataSet){
+        MealDataSet = mDataSet;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final int pos = position;
-        final Context context = parent.getContext();
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card_layout, parent, false);
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
+    }
 
-        if(convertView == null){
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_view_layout, parent, false);
-        }
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.mDate.setText(MealDataSet.get(position).getDate());
+        holder.mInfo.setText(MealDataSet.get(position).getFood_info());
+    }
 
-        TextView date = (TextView)convertView.findViewById(R.id.date_text);
-        TextView food_info = (TextView)convertView.findViewById(R.id.food_menu_text);
-        MealListItem listViewItem = ItemList.get(position);
 
-        date.setText(listViewItem.getDate());
-        food_info.setText(listViewItem.getFood_info());
-        return convertView;
+    @Override
+    public int getItemCount() {
+        return MealDataSet.size();
     }
 
     @Override
     public long getItemId(int position) {
         return position ;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return ItemList.get(position) ;
-    }
-
-    public void addItems(){
-        if(LunchDataParser.date_list.size() == 0) return;
-        for(int i=0; i<5; i++) {
-            MealListItem item = new MealListItem();
-            item.setDate(LunchDataParser.date_list.get(i));
-            item.setFood_info(LunchDataParser.info_list.get(i));
-            ItemList.add(item);
-        }
     }
 }

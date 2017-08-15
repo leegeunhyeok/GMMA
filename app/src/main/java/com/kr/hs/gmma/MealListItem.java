@@ -8,6 +8,11 @@ public class MealListItem {
     private String date;
     private String food_info;
 
+    public MealListItem(String date, String info){
+        this.date = date;
+        food_info = info;
+    }
+
     public void setDate(String date){
         this.date = date;
     }

@@ -12,67 +12,74 @@
         android:layout_height="wrap_content"
         android:src="@drawable/title"/>
 
-    <LinearLayout
-        android:padding="8dp"
-        android:layout_margin="24dp"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/item_background"
-        android:orientation="vertical">
+        android:layout_margin="16dp">
 
-        <Button
-            android:layout_margin="3dp"
-            android:id="@+id/school_page_btn"
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_margin="24dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#FF5252"
-            android:text="학교 홈페이지"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Button
-            android:layout_margin="3dp"
-            android:id="@+id/doje_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#FFAB40"
-            android:text="도제학교"/>
+            <Button
+                android:layout_margin="3dp"
+                android:id="@+id/school_page_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#FF5252"
+                android:text="학교 홈페이지"/>
 
-        <Button
-            android:layout_margin="3dp"
-            android:id="@+id/student_club_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#FFFF00"
-            android:text="학생회 페이스북"/>
+            <Button
+                android:layout_margin="3dp"
+                android:id="@+id/doje_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#FFAB40"
+                android:text="도제학교"/>
 
-        <Button
-            android:layout_margin="3dp"
-            android:id="@+id/dev_info_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#00E676"
-            android:text="개발자 정보"/>
+            <Button
+                android:layout_margin="3dp"
+                android:id="@+id/student_club_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#FFFF00"
+                android:text="학생회 페이스북"/>
 
-        <Button
-            android:layout_margin="3dp"
-            android:id="@+id/share_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#448AFF"
-            android:text="공유하기"/>
+            <Button
+                android:layout_margin="3dp"
+                android:id="@+id/dev_info_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00E676"
+                android:text="개발자 정보"/>
 
-        <Button
-            android:layout_margin="3dp"
-            android:id="@+id/setting_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#7C4DFF"
-            android:text="설정"/>
+            <Button
+                android:layout_margin="3dp"
+                android:id="@+id/share_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#448AFF"
+                android:text="공유하기"/>
 
-    </LinearLayout>
+            <Button
+                android:layout_margin="3dp"
+                android:id="@+id/setting_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#7C4DFF"
+                android:text="설정"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>

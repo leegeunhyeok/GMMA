@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
-    <ListView
-        android:id="@+id/notice_listview"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/notice_card_view"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="5dp"
-        android:divider="#00000000">
-    </ListView>
+        android:layout_height="match_parent"/>
 
     <ProgressBar
         android:id="@+id/notice_loading"
@@ -36,8 +36,8 @@
         android:id="@+id/notice_arc"
         android:visibility="invisible"
         android:layout_margin="10dp"
-        android:layout_alignBottom="@id/notice_listview"
-        android:layout_alignRight="@id/notice_listview"
+        android:layout_alignBottom="@id/notice_card_view"
+        android:layout_alignRight="@id/notice_card_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

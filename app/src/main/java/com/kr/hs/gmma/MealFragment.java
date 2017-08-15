@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,9 @@ import java.util.List;
 
 
 public class MealFragment extends Fragment implements View.OnClickListener {
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
     private CreateAnimator mAnimator;
     private Button btn1, btn2, btn3, fab;
     private ProgressBar progress;
@@ -36,6 +41,14 @@ public class MealFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.meal_fragment, container, false);
         mAnimator = new CreateAnimator();
+        mRecyclerView = (RecyclerView)view.findViewById(R.id.meal_card_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new MealListAdapter(MainActivity.mMealDataset);
+        mRecyclerView.setAdapter(mAdapter);
+
         btn1 = (Button)view.findViewById(R.id.refresh_btn);
         btn2 = (Button)view.findViewById(R.id.meal_show_btn);
         btn3 = (Button)view.findViewById(R.id.allergy_info);
@@ -48,11 +61,6 @@ public class MealFragment extends Fragment implements View.OnClickListener {
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
         fab.setOnClickListener(this);
-
-        MealListAdapter adapter = new MealListAdapter();
-        ListView listView = (ListView)view.findViewById(R.id.meal_listview);
-        listView.setAdapter(adapter);
-        adapter.addItems();
         return view;
     }
 
@@ -77,8 +85,7 @@ public class MealFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.refresh_btn:
-                LunchDataParser.info_list.clear();
-                LunchDataParser.date_list.clear();
+                MainActivity.mMealDataset.clear();
                 RefreshLunch();
                 break;
 

@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,9 @@ import java.util.List;
  */
 
 public class NoticeFragment extends Fragment implements View.OnClickListener {
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
     private CreateAnimator mAnimator;
     private ProgressBar progress;
     private Button next, prev, page_btn, fab;
@@ -39,12 +44,20 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.notice_fragment, container, false);
         mAnimator = new CreateAnimator();
+        mAnimator = new CreateAnimator();
+        mRecyclerView = (RecyclerView)view.findViewById(R.id.notice_card_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new NoticeListAdapter(MainActivity.mNoticeDataset);
+        mRecyclerView.setAdapter(mAdapter);
+
         next = (Button)view.findViewById(R.id.next_notice_btn);
         prev = (Button)view.findViewById(R.id.prev_notice_btn);
         page_btn = (Button)view.findViewById(R.id.notice_browser_btn);
         fab = (Button)view.findViewById(R.id.notice_page_fab);
         arc = (LinearLayout)view.findViewById(R.id.notice_arc);
-        progress = (ProgressBar)view.findViewById(R.id.notice_loading);
 
         fab.setText(NoticeDataParser.page + "");
 
@@ -52,17 +65,13 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
             arc.setVisibility(View.VISIBLE);
         }
 
+        progress = (ProgressBar)view.findViewById(R.id.notice_loading);
         progress.setVisibility(View.GONE);
 
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
         page_btn.setOnClickListener(this);
         fab.setOnClickListener(this);
-
-        NoticeListAdapter adapter = new NoticeListAdapter();
-        ListView listView = (ListView)view.findViewById(R.id.notice_listview);
-        listView.setAdapter(adapter);
-        adapter.addItems();
         return view;
     }
 
@@ -153,8 +162,7 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
     public void RefreshNotice(){
         fab.setText(n_page + "");
         progress.setVisibility(View.VISIBLE);
-        NoticeDataParser.date_list.clear();
-        NoticeDataParser.title_list.clear();
+        MainActivity.mNoticeDataset.clear();
         new NoticeDataParser(this ,"http://www.gmma.hs.kr/wah/main/mobile/bbs/list.htm?menuCode=69&scale=10&searchField=&searchKeyword=&pageNo=", n_page);
     }
 }

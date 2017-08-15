@@ -13,8 +13,8 @@ import java.util.Calendar;
 import java.util.StringTokenizer;
 
 public class LunchDataParser extends AsyncTask<String, String, Boolean> {
-    static ArrayList<String> date_list = new ArrayList<>();
-    static ArrayList<String> info_list = new ArrayList<>();
+    private ArrayList<String> date_list = new ArrayList<>();
+    private ArrayList<String> info_list = new ArrayList<>();
     private boolean Init;
     IntroActivity inActivity;
     MealFragment fr;
@@ -101,10 +101,15 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
             info_list.clear();
             date_list.clear();
             for (int i = 0; i < 5; i++) {
-                info_list.add("데이터 불러오기 실패");
-                date_list.add("0");
+                info_list.add("급식 데이터가 없습니다.");
+                date_list.add("[ ]");
             }
         }
+
+        for(int i=0; i<info_list.size(); i++){
+            MainActivity.mMealDataset.add(new MealListItem(date_list.get(i), info_list.get(i)));
+        }
+
         return result;
     }
 
@@ -120,6 +125,26 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
             parse = parse.replaceFirst("<br>", ""); // 1번째 br 제거
             parse = parse.replaceFirst("<br>", ""); // 2번째 br 제거
             parse = parse.replaceAll("<br>", "\n"); // 남은 br태그들을 개행으로 변환
+
+            // 음식9.13.5 이런 형식으로 급식 메뉴와 알레르기 정보가 합쳐져 있음.
+            // 메뉴와 알레르기 정보 사이에 공백을 집어넣는 작업
+            StringBuffer sb = new StringBuffer();
+            sb.append(parse.charAt(0));
+            boolean first = true;
+            for(int i=0; i<parse.length()-1; i++) {
+                char temp = parse.charAt(i+1);
+                if(temp == '\n') {
+                    sb.append(temp);
+                    first = true;
+                } else if(temp>=48 && temp<=57 && first) {
+                    sb.append("  /  ");
+                    sb.append(temp);
+                    first = false;
+                } else {
+                    sb.append(temp);
+                }
+            }
+            parse = sb.toString();
         }
         return parse; //리스트에 데이터 추가
     }

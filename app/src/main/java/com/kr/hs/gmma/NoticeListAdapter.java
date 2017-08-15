@@ -3,72 +3,46 @@ package com.kr.hs.gmma;
 /**
  * Created by lghlo on 2017-07-25.
  */
-import android.content.Context;
+
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 
 
-public class NoticeListAdapter extends BaseAdapter {
-    private ArrayList<NoticeListItem> ItemList = new ArrayList<>();
+public class NoticeListAdapter extends RecyclerView.Adapter<MainActivity.ViewHolder> {
+    private ArrayList<NoticeListItem> NoticeDataSet = new ArrayList<>();
+
+    public NoticeListAdapter(ArrayList<NoticeListItem> mDataSet){
+        NoticeDataSet  = mDataSet;
+    }
+
 
     @Override
-    public int getCount(){
-        return ItemList.size();
+    public MainActivity.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card_layout, parent, false);
+        MainActivity.ViewHolder vh = new MainActivity.ViewHolder(v);
+        return vh;
+    }
+
+
+    @Override
+    public void onBindViewHolder(MainActivity.ViewHolder holder, int position) {
+        holder.mDate.setText(NoticeDataSet .get(position).getDate());
+        holder.mInfo.setText(NoticeDataSet .get(position).getTitle());
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final int pos = position;
-        final Context context = parent.getContext();
-
-        if(convertView == null){
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_view_layout, parent, false);
-        }
-
-        TextView date = (TextView)convertView.findViewById(R.id.date_text);
-        TextView title = (TextView)convertView.findViewById(R.id.food_menu_text);
-        NoticeListItem listViewItem = ItemList.get(position);
-
-        date.setText(listViewItem.getDate());
-        title.setText(listViewItem.getTitle());
-        return convertView;
+    public int getItemCount() {
+        return NoticeDataSet.size();
     }
 
     @Override
     public long getItemId(int position) {
         return position ;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return ItemList.get(position) ;
-    }
-
-    public void addItem(String date, String title) {
-        NoticeListItem item = new NoticeListItem();
-        item.setDate(date);
-        item.setTitle(title);
-        ItemList.add(item);
-    }
-
-    public void addItems(){
-        for(int i=0; i<NoticeDataParser.date_list.size(); i++) {
-            NoticeListItem item = new NoticeListItem();
-            if(!(NoticeDataParser.date_list.isEmpty())) {
-                item.setDate(NoticeDataParser.date_list.get(i));
-                if(!(NoticeDataParser.title_list.isEmpty())){
-                    item.setTitle(NoticeDataParser.title_list.get(i));
-                }
-                ItemList.add(item);
-            }
-        }
     }
 }
