@@ -4,13 +4,13 @@
 [다운받기](http://blog.naver.com/lghlove0509/220961533600)
 
 
-####광명경영회계고등학교 앱입니다. (비공식)
-####개발자 이메일 : lghlove0509@naver.com
-###개발자: 이근혁
+#### 광명경영회계고등학교 앱입니다. (비공식)
+#### 개발자 이메일 : lghlove0509@naver.com
+### 개발자: 이근혁
 
 ---
 
-##***[ChangeLog]***
+## ***[ChangeLog]***
 
 Version 1.0
 Release Date: 2017/03/18
@@ -18,7 +18,7 @@ Release Date: 2017/03/18
 
 
 
-###Version 1.01
+### Version 1.01
 Release Date: 2017/03/19
 * 인트로화면 추가
 * 네트워크 접속여부를 인트로에서 확인가능
@@ -28,14 +28,14 @@ Release Date: 2017/03/19
 
 
 
-###Version 1.02
+### Version 1.02
 Release Date: 2017/04/08
 * 안드로이드 SDK 23 이상 버전에서 팅기는 오류 수정
 * 간단한 UI 수정
 
 
 
-###Version 1.03
+### Version 1.03
 Release Date: 2017/07
 * 웹뷰 방식 -> 파싱 방식으로 변경
 * 전체적인 UI, 레이아웃 개편
@@ -44,7 +44,7 @@ Release Date: 2017/07
 
 
 
-###Version 1.04
+### Version 1.04
 Release Date: 2017/07/26
 * 네트워크 연결이 안되어있을 시 충돌하던 오류 해결
 * 첫 인트로 화면에서 데이터 로딩 
@@ -53,7 +53,7 @@ Release Date: 2017/07/26
 
 
 
-###Version 1.05
+### Version 1.05
 Release Date: 2017/08/14
 * 앱 이름 GMMAHS 로 변경
 * 급식데이터 파싱작업 중 충돌 오류 해결
@@ -64,7 +64,7 @@ Release Date: 2017/08/14
 
 
 
-###Version 1.06
+### Version 1.06
 Release Date: 2017/08/15
 * "커뮤니티" 탭에 설정버튼 추가
 * 설정에 데이터 절약모드 추가
@@ -73,7 +73,7 @@ Release Date: 2017/08/15
 
 
 
-###Version 1.07
+### Version 1.07
 Release Date: 2017/08/15
 * 설정 기본 초기데이터 수정 (데이터 절약모드 OFF)
 * 급식 데이터 음식 메뉴와 알레르기 정보 사이에 구분문자 추가
