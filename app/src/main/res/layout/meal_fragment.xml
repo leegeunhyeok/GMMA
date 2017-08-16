@@ -33,7 +33,7 @@
         android:layout_alignParentRight="true"
         android:visibility="invisible"
         app:arc_origin="bottom|right"
-        app:arc_radius="168dp"
+        app:arc_radius="180dp"
         app:arc_axisRadius="150dp"
         app:arc_freeAngle="false"
         app:arc_reverseAngle="false">

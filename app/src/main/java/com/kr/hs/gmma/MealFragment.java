@@ -117,9 +117,10 @@ public class MealFragment extends Fragment implements View.OnClickListener {
         arc.setVisibility(View.VISIBLE);
         List<Animator> animList = new ArrayList<>();
 
-        for(int i=0, len = arc.getChildCount(); i<len; i++){
-            animList.add(mAnimator.createShowItemAnimator(arc.getChildAt(i), fab));
-        }
+        animList.add(mAnimator.createShowAnimator(arc.getChildAt(2), fab, 1.5f, CreateAnimator.Direction.VERTICAL));
+        animList.add(mAnimator.createShowAnimator(arc.getChildAt(1), fab, 1.5f, CreateAnimator.Direction.DIAGONAL));
+        animList.add(mAnimator.createShowAnimator(arc.getChildAt(0), fab, 1.5f, CreateAnimator.Direction.HORIZONTAL));
+
 
         AnimatorSet animSet = new AnimatorSet();
         animSet.setDuration(300);
@@ -132,9 +133,10 @@ public class MealFragment extends Fragment implements View.OnClickListener {
     private void hideMenu(){
         List<Animator> animList = new ArrayList<>();
 
-        for (int i = arc.getChildCount() - 1; i >= 0; i--) {
-            animList.add(mAnimator.createHideItemAnimator(arc.getChildAt(i), fab));
-        }
+        animList.add(mAnimator.createHideAnimator(arc.getChildAt(2), fab, 1.5f, CreateAnimator.Direction.VERTICAL));
+        animList.add(mAnimator.createHideAnimator(arc.getChildAt(1), fab, 1.5f, CreateAnimator.Direction.DIAGONAL));
+        animList.add(mAnimator.createHideAnimator(arc.getChildAt(0), fab, 1.5f, CreateAnimator.Direction.HORIZONTAL));
+
 
         AnimatorSet animSet = new AnimatorSet();
         animSet.setDuration(400);

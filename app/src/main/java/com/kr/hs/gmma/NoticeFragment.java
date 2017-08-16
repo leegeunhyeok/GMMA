@@ -121,7 +121,7 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
         List<Animator> animList = new ArrayList<>();
 
         for(int i=0, len = arc.getChildCount(); i<len; i++){
-            animList.add(mAnimator.createLineShowItemAnimator(arc.getChildAt(i), fab));
+            animList.add(mAnimator.createShowAnimator(arc.getChildAt(i), fab, 5, CreateAnimator.Direction.HORIZONTAL));
         }
 
         AnimatorSet animSet = new AnimatorSet();
@@ -136,7 +136,7 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
         List<Animator> animList = new ArrayList<>();
 
         for (int i = arc.getChildCount() - 1; i >= 0; i--) {
-            animList.add(mAnimator.createLineHideItemAnimator(arc.getChildAt(i), fab));
+            animList.add(mAnimator.createHideAnimator(arc.getChildAt(i), fab, 5, CreateAnimator.Direction.HORIZONTAL));
         }
 
         AnimatorSet animSet = new AnimatorSet();
