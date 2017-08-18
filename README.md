@@ -1,14 +1,17 @@
-# GMMA 
+# GMMAHS
 
 
 [다운받기](http://blog.naver.com/lghlove0509/220961533600)
 
 
 #### 광명경영회계고등학교 앱입니다. (비공식)
+#### [본교 홈페이지](http://www.gmma.hs.kr/wah/main/index.htm)
+
+
 #### 개발자 이메일 : lghlove0509@naver.com
 ### 개발자: 이근혁
 
-#### 2017/08/18 - Rename Repository
+#### 2017/08/18 - Rename Repository (gmma -> GMMA)
 
 ---
 
@@ -16,7 +19,7 @@
 
 ### Version 1.0
 Release Date: 2017/03/18
-* 1. 첫 배포 시작!
+* 첫 배포 시작!
 
 
 
