@@ -8,15 +8,15 @@
 #### 개발자 이메일 : lghlove0509@naver.com
 ### 개발자: 이근혁
 
-# 2017/08/18 - Rename Repository
+#### 2017/08/18 - Rename Repository
 
 ---
 
 ## ***[ChangeLog]***
 
-Version 1.0
+### Version 1.0
 Release Date: 2017/03/18
-1. 첫 배포 시작!
+* 1. 첫 배포 시작!
 
 
 
