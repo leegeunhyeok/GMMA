@@ -8,6 +8,8 @@
 #### 개발자 이메일 : lghlove0509@naver.com
 ### 개발자: 이근혁
 
+# 2017/08/18 - Rename Repository
+
 ---
 
 ## ***[ChangeLog]***
