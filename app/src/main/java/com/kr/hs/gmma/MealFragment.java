@@ -3,8 +3,6 @@ package com.kr.hs.gmma;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,10 +16,8 @@ import android.view.ViewGroup;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.ogaclejapan.arclayout.Arc;
 import com.ogaclejapan.arclayout.ArcLayout;
 
 import java.util.ArrayList;
@@ -85,8 +81,11 @@ public class MealFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.refresh_btn:
-                MainActivity.mMealDataset.clear();
-                RefreshLunch();
+                IntroActivity.c = IntroActivity.mDBManager.getAllData();
+                if(IntroActivity.c.getCount() != 5){
+                    MainActivity.mMealDataset.clear();
+                    RefreshLunch();
+                }
                 break;
 
             case R.id.meal_show_btn:

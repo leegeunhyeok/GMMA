@@ -10,7 +10,6 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.StringTokenizer;
 
 public class LunchDataParser extends AsyncTask<String, String, Boolean> {
     private ArrayList<String> date_list = new ArrayList<>();
@@ -18,6 +17,7 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
     private boolean Init;
     IntroActivity inActivity;
     MealFragment fr;
+
 
     public LunchDataParser(IntroActivity activity, String url){
         Init = true;
@@ -37,9 +37,10 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
         boolean result = false;
         Calendar c = Calendar.getInstance();
         int day_of_week = c.get(Calendar.DAY_OF_WEEK); //1 일요일 ~ 7 토요일
-        int day =c.get(Calendar.DAY_OF_MONTH); // 오늘 날짜
+        int day = c.get(Calendar.DAY_OF_MONTH); // 오늘 날짜
         int day_count = 0; // 이번주 데이터만 골라내기 위해 몇일인지 카운트
         int week_count = 0; // 요일 저장 변수 // 0 월, 1 화... 4 금
+        final int last_day = c.getMaximum(Calendar.DAY_OF_MONTH); //이번달의 마지막날
 
         try {
             Document doc = Jsoup.connect(url[0]).timeout(5000).get(); // 광명경영회계고등학교의 이번달 급식 데이터 조회링크
@@ -57,27 +58,33 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
                             //버퍼에 있는 데이터 길이가 > 0 이면
                             if(++day_count >= day - (day_of_week-2) && info_list.size() < 5) {
                                 // 오늘 날짜가 포함된 주(Week)의 급식데이터 5개 불러오기
+                                int temp_day = day_count;
+
+                                if(day_count>last_day){
+                                    temp_day-=last_day; //이번달의 마지막날을 초과하면 1일부터 시작
+                                }
+
                                 info_list.add(parseDayMeal(buf.toString() + " ", day_count));
                                 String weekday = "";
                                 switch (week_count++){
                                     case 0:
-                                        weekday = day_count + "일 - [월]";
+                                        weekday = temp_day + "일 - [월]";
                                         break;
 
                                     case 1:
-                                        weekday = day_count + "일 - [화]";
+                                        weekday = temp_day + "일 - [화]";
                                         break;
 
                                     case 2:
-                                        weekday = day_count + "일 - [수]";
+                                        weekday = temp_day + "일 - [수]";
                                         break;
 
                                     case 3:
-                                        weekday = day_count + "일 - [목]";
+                                        weekday = temp_day + "일 - [목]";
                                         break;
 
                                     case 4:
-                                        weekday = day_count + "일 - [금]";
+                                        weekday = temp_day + "일 - [금]";
                                         break;
 
                                     default:
@@ -98,16 +105,23 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
             result = true;
         } catch (IOException e) {
             Log.e("ERROR", "In data parse progress (Lunch) : IOException");
-            info_list.clear();
-            date_list.clear();
+            //info_list.clear();
+            //date_list.clear();
+            IntroActivity.mDBManager.reset();
             for (int i = 0; i < 5; i++) {
-                info_list.add("급식 데이터가 없습니다.");
-                date_list.add("[ ]");
+                MainActivity.mMealDataset.add(new MealListItem("[ ]", "급식 데이터가 없습니다."));
+                //info_list.add("급식 데이터가 없습니다.");
+                //date_list.add("[ ]");
             }
+            return result;
         }
 
+        IntroActivity.mDBManager.reset();
         for(int i=0; i<info_list.size(); i++){
-            MainActivity.mMealDataset.add(new MealListItem(date_list.get(i), info_list.get(i)));
+            String date = date_list.get(i);
+            String info = info_list.get(i);
+            MainActivity.mMealDataset.add(new MealListItem(date, info));
+            IntroActivity.mDBManager.insert(date, info);
         }
 
         return result;
