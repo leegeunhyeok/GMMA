@@ -40,6 +40,7 @@ public class NoticeDataParser extends AsyncTask<String, String, Boolean> {
     }
 
     public Boolean doInBackground(String... url){
+        MainActivity.mNoticeDataset.clear();
         boolean result = false;
         try {
             Document doc = Jsoup.connect(url[0] + page).timeout(5000).get();
@@ -80,12 +81,16 @@ public class NoticeDataParser extends AsyncTask<String, String, Boolean> {
             MainActivity.mNoticeDataset.add(new NoticeListItem(date_list.get(i), title_list.get(i)));
         }
 
+
+        if(inActivity != null){
+            inActivity.NoticeOk = true;
+        }
         return result;
     }
 
     protected void onPostExecute(Boolean status){
         if(Init){
-            inActivity.LoadFinish(status);
+            inActivity.LoadFinish();
         } else {
             fr.ReloadFragment();
         }

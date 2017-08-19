@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
     private RecyclerView.LayoutManager mLayoutManager;
     private CreateAnimator mAnimator;
     private ProgressBar progress;
-    private Button next, prev, page_btn, fab;
+    private Button next, prev, page_btn, refresh, fab;
     private LinearLayout arc;
     private boolean show = false;
     private int n_page;
@@ -54,9 +56,11 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
         prev = (Button)view.findViewById(R.id.prev_notice_btn);
         page_btn = (Button)view.findViewById(R.id.notice_browser_btn);
         fab = (Button)view.findViewById(R.id.notice_page_fab);
+        refresh = (Button)view.findViewById(R.id.notice_refresh_btn);
         arc = (LinearLayout)view.findViewById(R.id.notice_arc);
 
-        fab.setText(NoticeDataParser.page + "");
+        n_page = NoticeDataParser.page;
+        fab.setText(n_page + "");
 
         if(show){
             arc.setVisibility(View.VISIBLE);
@@ -69,6 +73,7 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
         prev.setOnClickListener(this);
         page_btn.setOnClickListener(this);
         fab.setOnClickListener(this);
+        refresh.setOnClickListener(this);
         return view;
     }
 
@@ -93,6 +98,10 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
                     n_page = --NoticeDataParser.page;
                     RefreshNotice();
                 }
+                break;
+
+            case R.id.notice_refresh_btn:
+                RefreshNotice();
                 break;
 
             case R.id.notice_browser_btn:
@@ -159,7 +168,6 @@ public class NoticeFragment extends Fragment implements View.OnClickListener {
     public void RefreshNotice(){
         fab.setText(n_page + "");
         progress.setVisibility(View.VISIBLE);
-        MainActivity.mNoticeDataset.clear();
         new NoticeDataParser(this ,"http://www.gmma.hs.kr/wah/main/mobile/bbs/list.htm?menuCode=69&scale=10&searchField=&searchKeyword=&pageNo=", n_page);
     }
 }

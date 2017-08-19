@@ -20,7 +20,8 @@ import android.widget.Toast;
 public class SettingActivity extends AppCompatActivity {
     private TextView reset_text = null;
     private Button reset = null;
-    private Switch sw = null;
+    private Switch sw_meal = null;
+    private Switch sw_notice = null;
     private SharedPreferences mPref = null;
     private boolean isNowReset = false;
 
@@ -59,31 +60,43 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!isNowReset){
-                    //TODO: 인터넷 접속 상태로 리셋 가능여부 체크
                     IntroActivity.mDBManager.reset();
-                    MainActivity.mMealDataset.clear();
                     reset_text.setTextColor(Color.RED);
                     reset_text.setText("초기화되었습니다.");
+                    reset.setEnabled(false);
                     isNowReset = true;
                 }
             }
         });
 
-        sw = (Switch)findViewById(R.id.datasave_switch);
-        sw.setOnClickListener(new View.OnClickListener() {
+        sw_meal = (Switch)findViewById(R.id.datasave_switch_meal);
+        sw_meal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean isOn = sw.isChecked();
+                boolean isOn = sw_meal.isChecked();
                 SharedPreferences.Editor prefEditor = mPref.edit();
-                prefEditor.putBoolean("SAVEMODE_SET", isOn);
+                prefEditor.putBoolean("SAVEMODE_SET_MEAL", isOn);
+                prefEditor.apply();
+            }
+        });
+
+        sw_notice = (Switch)findViewById(R.id.datasave_switch_notice);
+        sw_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isOn = sw_notice.isChecked();
+                SharedPreferences.Editor prefEditor = mPref.edit();
+                prefEditor.putBoolean("SAVEMODE_SET_NOTICE", isOn);
                 prefEditor.apply();
             }
         });
 
         mPref = getSharedPreferences("Setting", Context.MODE_PRIVATE);
-        boolean isOn = mPref.getBoolean("SAVEMODE_SET", false);
+        boolean isOnMeal = mPref.getBoolean("SAVEMODE_SET_MEAL", false);
+        boolean isOnNotice = mPref.getBoolean("SAVEMODE_SET_NOTICE", false);
         mPref.registerOnSharedPreferenceChangeListener(mListener);
-        sw.setChecked(isOn);
+        sw_meal.setChecked(isOnMeal);
+        sw_notice.setChecked(isOnNotice);
     }
 
     @Override

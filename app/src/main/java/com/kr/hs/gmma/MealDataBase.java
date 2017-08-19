@@ -17,8 +17,10 @@ public class MealDataBase {
 
     public static final int DB_VERSION = 1;
     public static final String _TABLE_NAME_ = "meal_data"; // 테이블 이름
-    public static final String _DATABASE_NAME_ = "meal_month.db";
+    public static final String _DATABASE_NAME_ = "monthly_meal.db";
 
+    public static final String MONTH = "month";
+    public static final String WEEK = "week"; // 주
     public static final String DATE = "date"; // 날짜
     public static final String CONTENT = "content"; //급식 데이터
 
@@ -26,7 +28,9 @@ public class MealDataBase {
 
     //테이블 생성 SQL문 문자열
     public static final String _CREATE_ = "CREATE TABLE IF NOT EXISTS " + _TABLE_NAME_ + "("
-            + DATE + " INTEGER, "
+            + MONTH + "TEXT NOT NULL, "
+            + WEEK + " TEXT NOT NULL, "
+            + DATE + " TEXT NOT NULL, "
             + CONTENT + " TEXT NOT NULL);";
 
     public static MealDataBase getInstance(Context context){
@@ -45,11 +49,17 @@ public class MealDataBase {
         mDatabase.execSQL(_CREATE_);
     }
 
-    public void insert(String date, String content){
+    public void insert(String date, int week, int month, String content){
         Log.i("GMMAHS", "ADD Data in database");
         mDatabase.execSQL("INSERT INTO " + _TABLE_NAME_ + " VALUES(\'"
+                            + month + "\', \'"
+                            + week + "\', \'"
                             + date + "\', \'"
                             + content + "\');");
+    }
+
+    public Cursor getWeekData(int week){
+        return mDatabase.rawQuery("SELECT * FROM " + _TABLE_NAME_ + " WHERE week=" + week, null);
     }
 
     public void reset(){

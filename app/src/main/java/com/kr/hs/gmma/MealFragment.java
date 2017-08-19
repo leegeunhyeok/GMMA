@@ -3,7 +3,10 @@ package com.kr.hs.gmma;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +20,7 @@ import android.view.animation.AnticipateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.ogaclejapan.arclayout.ArcLayout;
 
@@ -81,11 +85,15 @@ public class MealFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.refresh_btn:
-                IntroActivity.c = IntroActivity.mDBManager.getAllData();
-                if(IntroActivity.c.getCount() != 5){
+                boolean status = getWhatKindOfNetwork(this.getContext());
+                if(status){
+                    IntroActivity.mDBManager.reset();
                     MainActivity.mMealDataset.clear();
                     RefreshLunch();
+                } else {
+                    Toast.makeText(this.getContext(), "네트워크 상태를 확인해주세요", Toast.LENGTH_SHORT).show();
                 }
+
                 break;
 
             case R.id.meal_show_btn:
@@ -101,6 +109,15 @@ public class MealFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
         }
+    }
+
+    public static boolean getWhatKindOfNetwork(Context context){
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) {
+            return true;
+        }
+        return false;
     }
 
     private void onFabClick(View v) {

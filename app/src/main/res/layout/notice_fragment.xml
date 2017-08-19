@@ -56,6 +56,15 @@
             android:backgroundTint="@color/colorPrimary"/>
 
         <Button
+            android:id="@+id/notice_refresh_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/ic_refresh"
+            android:backgroundTint="@color/colorPrimary" />
+
+        <Button
             android:id="@+id/prev_notice_btn"
             android:layout_marginRight="6dp"
             android:layout_width="46dp"
