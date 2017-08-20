@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:padding="10dp"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -29,7 +29,8 @@
                 android:id="@+id/datasave_switch_meal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"/>
 
             <TextView
                 android:layout_gravity="center_vertical"
@@ -53,15 +54,18 @@
                 android:id="@+id/datasave_switch_notice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"/>
 
             <TextView
+                android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:textSize="11dp"
                 android:textStyle="italic"
-                android:hint="앱 실행 시 공지데이터를 불러오지 않습니다"/>
+                android:paddingBottom="6dp"
+                android:hint="앱 실행 시 공지데이터를\n불러오지 않습니다"/>
         </LinearLayout>
 
         <TextView
