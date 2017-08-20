@@ -19,25 +19,27 @@
             android:text="데이터 절약모드"/>
 
         <LinearLayout
-            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <Switch
                 android:id="@+id/datasave_switch_meal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <TextView
+                android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
+                android:lines="2"
+                android:hint="저장된 데이터가 없어도 급식데이터를\n불러오지 않습니다"
+                android:paddingBottom="6dp"
                 android:textSize="11dp"
-                android:textStyle="italic"
-                android:singleLine="true"
-                android:hint="저장된 데이터가 없어도 급식데이터를 불러오지 않습니다"/>
+                android:textStyle="italic" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,7 +60,6 @@
                 android:layout_weight="4"
                 android:textSize="11dp"
                 android:textStyle="italic"
-                android:singleLine="true"
                 android:hint="앱 실행 시 공지데이터를 불러오지 않습니다"/>
         </LinearLayout>
 
@@ -85,13 +86,13 @@
 
             <TextView
                 android:id="@+id/reset_text"
+                android:layout_gravity="center_vertical"
                 android:layout_marginLeft="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="11dp"
                 android:textStyle="italic"
-                android:singleLine="true"
-                android:hint="저장되어있는 급식데이터를 모두 초기화합니다."/>
+                android:hint="저장되어있는 급식데이터를\n모두 초기화합니다."/>
         </LinearLayout>
     </LinearLayout>
 
