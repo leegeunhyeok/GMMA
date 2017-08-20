@@ -26,6 +26,7 @@ public class IntroActivity extends AppCompatActivity {
     private String Now_Month, month="";
     private int count;
     private boolean dbLoad = false;
+    private boolean net_status;
 
 
     @Override
@@ -41,7 +42,7 @@ public class IntroActivity extends AppCompatActivity {
         NoticeOn = mPref.getBoolean("SAVEMODE_SET_NOTICE", false);
         MealOk = false;
         NoticeOk = false;
-        boolean status = getWhatKindOfNetwork(this);
+        net_status = getWhatKindOfNetwork(this);
 
         MainActivity.mMealDataset.clear();
         MainActivity.mNoticeDataset.clear();
@@ -57,7 +58,7 @@ public class IntroActivity extends AppCompatActivity {
         }
 
 
-        if(status){
+        if(net_status){
             if(!NoticeOn){
                 new NoticeDataParser(this, NOTICE_DEFAULT_URL, 1);
             } else {
@@ -112,14 +113,11 @@ public class IntroActivity extends AppCompatActivity {
         }
 
 
-        if(status){
-            msg = "환영합니다";
-        } else {
-            msg = "네트워크 끊김";
+        if(!net_status){
+            Toast.makeText(this, "네트워크 접속상태를 확인해주세요", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
-        if(!status || (NoticeOn && (MealOn || dbLoad))){
+        if(!net_status || (NoticeOn && (MealOn || dbLoad))){
             LoadFinish();
         }
     }
@@ -135,6 +133,9 @@ public class IntroActivity extends AppCompatActivity {
 
     public void LoadFinish(){
         if(NoticeOk && MealOk){
+            if(net_status) {
+                Toast.makeText(this, "환영합니다", Toast.LENGTH_SHORT).show();
+            }
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
