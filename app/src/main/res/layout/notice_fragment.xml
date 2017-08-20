@@ -52,8 +52,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:background="@drawable/ic_open_in_browser"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:background="@drawable/open_in_browser_image_btn"/>
 
         <Button
             android:id="@+id/notice_refresh_btn"
@@ -61,8 +60,7 @@
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:layout_marginRight="6dp"
-            android:background="@drawable/ic_refresh"
-            android:backgroundTint="@color/colorPrimary" />
+            android:background="@drawable/refresh_image_btn"/>
 
         <Button
             android:id="@+id/prev_notice_btn"

@@ -43,8 +43,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:gravity="center"
-            android:background="@drawable/ic_refresh"
-            android:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/refresh_image_btn"
             app:arc_origin="center" />
 
         <Button
@@ -52,8 +51,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:gravity="center"
-            android:background="@drawable/ic_info"
-            android:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/info_image_btn"
             app:arc_origin="center" />
 
         <Button
@@ -61,8 +59,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:gravity="center"
-            android:backgroundTint="@color/colorPrimary"
-            android:background="@drawable/ic_open_in_browser"
+            android:background="@drawable/open_in_browser_image_btn"
             app:arc_origin="center" />
 
     </com.ogaclejapan.arclayout.ArcLayout>

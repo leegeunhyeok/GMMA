@@ -7,18 +7,14 @@ package com.kr.hs.gmma;
 public class NoticeListItem {
     private String title;
     private String date;
+    private String writer;
+    private String post_url;
 
-    public NoticeListItem(String date, String title){
+    public NoticeListItem(String date, String title, String writer, String post_url){
         this.date = date;
         this.title = title;
-    }
-
-    public void setTitle(String title){
-        this.title = title;
-    }
-
-    public void setDate(String date){
-        this.date = date;
+        this.writer = writer;
+        this.post_url = post_url;
     }
 
     public String getTitle(){
@@ -27,5 +23,13 @@ public class NoticeListItem {
 
     public String getDate(){
         return date;
+    }
+
+    public String getWriter(){
+        return writer;
+    }
+
+    public String getUrl() {
+        return post_url;
     }
 }

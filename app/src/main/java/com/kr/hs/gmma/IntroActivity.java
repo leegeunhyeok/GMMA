@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
@@ -17,10 +16,11 @@ import java.util.Calendar;
 
 
 public class IntroActivity extends AppCompatActivity {
+    private final String NOTICE_DEFAULT_URL = "http://www.gmma.hs.kr/wah/main/mobile/bbs/list.htm?menuCode=69&scale=10&searchField=&searchKeyword=&pageNo=";
+    private final String MEAL_DEFAULT_URL = "http://stu.goe.go.kr/sts_sci_md00_001.do?schulCode=J100000488&schulCrseScCode=4&schulKndScCode=4";
     public static MealDataBase mDBManager = null;
     public static Cursor c = null;
     private String msg;
-    private Toast toast;
     private boolean MealOn, NoticeOn;
     protected boolean MealOk, NoticeOk;
     private String Now_Month, month="";
@@ -59,17 +59,17 @@ public class IntroActivity extends AppCompatActivity {
 
         if(status){
             if(!NoticeOn){
-                new NoticeDataParser(this, "http://www.gmma.hs.kr/wah/main/mobile/bbs/list.htm?menuCode=69&scale=10&searchField=&searchKeyword=&pageNo=", 1);
+                new NoticeDataParser(this, NOTICE_DEFAULT_URL, 1);
             } else {
                 for(int i=0; i<10; i++){
-                    MainActivity.mNoticeDataset.add(new NoticeListItem("[ ]", "표시할 데이터가 없습니다."));
+                    MainActivity.mNoticeDataset.add(new NoticeListItem("[ ]", "표시할 데이터가 없습니다.", "---", NOTICE_DEFAULT_URL+1));
                 }
                 NoticeOk = true;
             }
 
             if(!Now_Month.equals(month) && !MealOn){
-                new LunchDataParser(this, "http://stu.goe.go.kr/sts_sci_md00_001.do?schulCode=J100000488&schulCrseScCode=4&schulKndScCode=4");
-                Toast.makeText(this, "이번달 데이터를 새로 불러옵니다.", Toast.LENGTH_SHORT).show();
+                new LunchDataParser(this, MEAL_DEFAULT_URL);
+                Toast.makeText(this, "이번달 급식 데이터를 새로 불러옵니다", Toast.LENGTH_SHORT).show();
             } else if(count != 0){
                 Log.i("GMMAHS", "Load Database..");
                 MainActivity.mMealDataset.add(new MealListItem(c.getString(2), c.getString(3)));
@@ -81,7 +81,7 @@ public class IntroActivity extends AppCompatActivity {
                 dbLoad = MealOk = true;
                 Log.i("GMMAHS", "Loaded Database!");
             } else if(!MealOn){
-                new LunchDataParser(this, "http://stu.goe.go.kr/sts_sci_md00_001.do?schulCode=J100000488&schulCrseScCode=4&schulKndScCode=4");
+                new LunchDataParser(this, MEAL_DEFAULT_URL);
             } else {
                 for(int i=0; i<5; i++){
                     MainActivity.mMealDataset.add(new MealListItem("[ ]", "급식 데이터가 없습니다."));
@@ -90,7 +90,7 @@ public class IntroActivity extends AppCompatActivity {
             }
         } else {
             for(int i=0; i<10; i++){
-                MainActivity.mNoticeDataset.add(new NoticeListItem("[ ]", "표시할 데이터가 없습니다."));
+                MainActivity.mNoticeDataset.add(new NoticeListItem("[ ]", "표시할 데이터가 없습니다.", "---", NOTICE_DEFAULT_URL+1));
             }
 
             if(count != 0){
@@ -117,7 +117,7 @@ public class IntroActivity extends AppCompatActivity {
         } else {
             msg = "네트워크 끊김";
         }
-        toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
         if(!status || (NoticeOn && (MealOn || dbLoad))){
             LoadFinish();

@@ -37,7 +37,7 @@
                 android:textSize="11dp"
                 android:textStyle="italic"
                 android:singleLine="true"
-                android:hint="앱 실행 시 급식데이터를 불러오지 않습니다"/>
+                android:hint="저장된 데이터가 없어도 급식데이터를 불러오지 않습니다"/>
         </LinearLayout>
 
         <LinearLayout
@@ -91,7 +91,7 @@
                 android:textSize="11dp"
                 android:textStyle="italic"
                 android:singleLine="true"
-                android:hint="저장되어있는 급식데이터를 초기화합니다."/>
+                android:hint="저장되어있는 급식데이터를 모두 초기화합니다."/>
         </LinearLayout>
     </LinearLayout>
 
