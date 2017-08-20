@@ -63,7 +63,7 @@ public class IntroActivity extends AppCompatActivity {
                 new NoticeDataParser(this, NOTICE_DEFAULT_URL, 1);
             } else {
                 for(int i=0; i<10; i++){
-                    MainActivity.mNoticeDataset.add(new NoticeListItem("[ ]", "표시할 데이터가 없습니다.", "---", NOTICE_DEFAULT_URL+1));
+                    MainActivity.mNoticeDataset.add(new NoticeListItem("0000. 0. 00", "표시할 데이터가 없습니다.", "---", NOTICE_DEFAULT_URL+1));
                 }
                 NoticeOk = true;
             }
@@ -91,7 +91,7 @@ public class IntroActivity extends AppCompatActivity {
             }
         } else {
             for(int i=0; i<10; i++){
-                MainActivity.mNoticeDataset.add(new NoticeListItem("[ ]", "표시할 데이터가 없습니다.", "---", NOTICE_DEFAULT_URL+1));
+                MainActivity.mNoticeDataset.add(new NoticeListItem("0000. 0. 00", "표시할 데이터가 없습니다.", "---", NOTICE_DEFAULT_URL+1));
             }
 
             if(count != 0){

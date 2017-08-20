@@ -85,7 +85,7 @@ public class NoticeDataParser extends AsyncTask<String, String, Boolean> {
                 String str = writerNdate_tokens.nextToken();
                 if(str.charAt(0)=='[') {
                     date_count--;
-                    date_list.add(str);
+                    date_list.add(str.substring(1, str.indexOf(']')));
                 } else {
                     writer_count--;
                     writer_list.add(str);
@@ -96,7 +96,7 @@ public class NoticeDataParser extends AsyncTask<String, String, Boolean> {
             Log.e("ERROR", "In data parse progress (Notice) : IOException");
         } finally {
             for(int i=0; i<date_count; i++){
-                date_list.add("[ ]");
+                date_list.add("0000. 0. 00");
             }
 
             for(int i=0; i<title_count; i++){

@@ -5,8 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:padding="10dp"
-        android:layout_margin="16dp"
+        android:layout_margin="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -29,16 +28,15 @@
                 android:id="@+id/datasave_switch_meal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"/>
+                android:layout_weight="2"/>
 
             <TextView
                 android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:lines="2"
-                android:hint="저장된 데이터가 없어도 급식데이터를\n불러오지 않습니다"
+                android:hint="저장된 데이터가 없어도 급식\n데이터를 불러오지 않습니다"
                 android:paddingBottom="6dp"
                 android:textSize="11dp"
                 android:textStyle="italic" />
@@ -54,14 +52,13 @@
                 android:id="@+id/datasave_switch_notice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"/>
+                android:layout_weight="2"/>
 
             <TextView
                 android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:textSize="11dp"
                 android:textStyle="italic"
                 android:paddingBottom="6dp"
