@@ -52,7 +52,7 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
                 if (str.charAt(i) == 'v') { // div 태그 제거
                     if (inDiv) {
                         buf.delete(buf.length() - 4, buf.length());
-                        if (buf.length() > 0 && day_count < last_day) {
+                        if (buf.length() > 0 && day_count <= last_day) {
                             if(day_week > 7) day_week = 1;
                             month_list.add(new DayMeal(month, day_count, DayWeek_toString(day_week), parseDayMeal(buf.toString() + " ", day_count)));
                             day_count++;
@@ -84,6 +84,7 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
                 int temp_week = c.get(Calendar.WEEK_OF_MONTH);
                 String date = month + "월 " + temp.getDAY() + "일 - " + temp.getDAY_OF_WEEK();
                 String info = temp.getMealData();
+                //Log.i("GMMAHS", date);
                 IntroActivity.mDBManager.insert(date, temp_week, month, info);
                 if(temp_week == week_of_month) {
                     MainActivity.mMealDataset.add(new MealListItem(date, info));
@@ -199,7 +200,7 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
         year = c.get(Calendar.YEAR); // 년도
         month = c.get(Calendar.MONTH) + 1; // 이번 달
         last_day = c.getMaximum(Calendar.DAY_OF_MONTH); // 이번달의 마지막 날
-
+        Log.i("GMMAHS", "Month of end " + last_day);
         c.set(year, month - 1, 1); // 날짜를 이번달 1일로 설정
         first_day_of_week = c.get(Calendar.DAY_OF_WEEK); // 이번달의 첫째날 요일 (일요일 ~ 7 토요일)
     }

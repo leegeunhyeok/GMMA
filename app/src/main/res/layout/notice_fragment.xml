@@ -2,15 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/notice_card_view"
-        android:layout_marginTop="5dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"/>
 
     <ProgressBar
         android:id="@+id/notice_loading"
@@ -30,7 +31,7 @@
         android:background="@drawable/circle_btn"
         android:text="1"
         android:textSize="20dp"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/colorBackground"/>
 
     <LinearLayout
         android:id="@+id/notice_arc"

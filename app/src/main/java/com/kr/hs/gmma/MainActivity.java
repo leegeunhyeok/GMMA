@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mDate;
         public TextView mInfo;
+        public LinearLayout mToday;
 
         public ViewHolder(View view) {
             super(view);
             mDate = (TextView) view.findViewById(R.id.sub_text);
             mInfo = (TextView)view.findViewById(R.id.main_text);
+            mToday = (LinearLayout)view.findViewById(R.id.today_check);
         }
     }
 

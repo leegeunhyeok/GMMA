@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_margin="25dp"
+        android:id="@+id/setting_panel"
+        android:padding="26dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -75,30 +76,48 @@
             android:text="데이터베이스 초기화"/>
 
         <LinearLayout
-            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/reset_db_btn"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:padding="5dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="초기화" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/reset_db_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="초기화" />
+
+                <TextView
+                    android:id="@+id/reset_text"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:textStyle="italic"
+                    android:hint="저장되어있는 급식데이터를\n모두 초기화합니다."/>
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/reset_text"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="4dp"
+                android:id="@+id/db_data_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:textStyle="italic"
-                android:hint="저장되어있는 급식데이터를\n모두 초기화합니다."/>
+                android:padding="5dp"
+                android:text="count"/>
+
         </LinearLayout>
+
+
+
     </LinearLayout>
 
     <Button
+        android:layout_below="@id/setting_panel"
         android:id="@+id/setting_submit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -106,4 +125,4 @@
         android:text="확인"/>
 
 
-</LinearLayout>
+</RelativeLayout>

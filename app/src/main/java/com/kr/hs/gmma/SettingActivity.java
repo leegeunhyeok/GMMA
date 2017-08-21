@@ -2,6 +2,7 @@ package com.kr.hs.gmma;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 public class SettingActivity extends AppCompatActivity {
     private TextView reset_text = null;
+    private TextView data_count = null;
     private Button reset = null;
     private Switch sw_meal = null;
     private Switch sw_notice = null;
@@ -63,6 +65,7 @@ public class SettingActivity extends AppCompatActivity {
                     IntroActivity.mDBManager.reset();
                     reset_text.setTextColor(Color.RED);
                     reset_text.setText("초기화되었습니다.");
+                    data_count.setText("저장된 이번달 데이터 : 0");
                     reset.setEnabled(false);
                     isNowReset = true;
                 }
@@ -90,6 +93,13 @@ public class SettingActivity extends AppCompatActivity {
                 prefEditor.apply();
             }
         });
+
+        Cursor c = IntroActivity.mDBManager.getAllData();
+        data_count = (TextView)findViewById(R.id.db_data_count);
+        data_count.setText("저장된 이번달 데이터 : " + c.getCount());
+        if(!c.isClosed()){
+            c.close();
+        }
 
         mPref = getSharedPreferences("Setting", Context.MODE_PRIVATE);
         boolean isOnMeal = mPref.getBoolean("SAVEMODE_SET_MEAL", false);

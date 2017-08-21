@@ -19,12 +19,14 @@ import android.view.ViewGroup;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ogaclejapan.arclayout.ArcLayout;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -33,6 +35,7 @@ public class MealFragment extends Fragment implements View.OnClickListener {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private CreateAnimator mAnimator;
+    private LinearLayout today;
     private Button btn1, btn2, btn3, fab;
     private ProgressBar progress;
     private ArcLayout arc;
@@ -56,6 +59,7 @@ public class MealFragment extends Fragment implements View.OnClickListener {
         fab = (Button)view.findViewById(R.id.fab_meal);
         progress = (ProgressBar)view.findViewById(R.id.meal_loading);
         progress.setVisibility(View.GONE);
+        today = (LinearLayout)view.findViewById(R.id.today_check);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);

@@ -28,4 +28,13 @@ public class MealListItem {
     public String getFood_info(){
         return food_info;
     }
+
+    public int getDateInt(){
+        if(!date.equals("[ ]")){
+            String temp;
+            int index = date.indexOf("일");
+            temp = date.substring(index-2, index);
+            return Integer.parseInt(temp.replaceAll("\\s+", ""));
+        } else return 0;
+    }
 }
