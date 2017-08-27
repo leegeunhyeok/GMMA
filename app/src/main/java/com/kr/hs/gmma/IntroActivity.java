@@ -20,7 +20,6 @@ public class IntroActivity extends AppCompatActivity {
     private final String MEAL_DEFAULT_URL = "http://stu.goe.go.kr/sts_sci_md00_001.do?schulCode=J100000488&schulCrseScCode=4&schulKndScCode=4";
     public static MealDataBase mDBManager = null;
     public static Cursor c = null;
-    private String msg;
     private boolean MealOn, NoticeOn;
     protected boolean MealOk, NoticeOk;
     private String Now_Month, month="";

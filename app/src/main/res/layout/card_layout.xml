@@ -57,6 +57,7 @@
             <TextView
                 android:id="@+id/main_text"
                 android:padding="16dp"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="18dp"/>

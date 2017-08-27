@@ -146,7 +146,7 @@ public class LunchDataParser extends AsyncTask<String, String, Boolean> {
                     sb.append(temp);
                     first = true;
                 } else if (temp >= 48 && temp <= 57 && first) {
-                    sb.append("/");
+                    sb.append(" ");
                     sb.append(temp);
                     first = false;
                 } else {
