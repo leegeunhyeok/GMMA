@@ -9,10 +9,7 @@
         android:id="@+id/meal_card_view"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_height="match_parent"/>
 
     <Button
         android:id="@+id/fab_meal"
@@ -22,7 +19,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="+"
-        android:textColor="@color/colorBackground"
+        android:textColor="@color/cardBackground"
         android:textSize="30dp"
         android:background="@drawable/circle_btn" />
 

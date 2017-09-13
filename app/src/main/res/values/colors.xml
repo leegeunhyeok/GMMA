@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#607D8B</color>
-    <color name="colorPrimaryDark">#546E7A</color>
-    <color name="colorAccent">#CFD8DC</color>
-    <color name="colorBackground">#FAFAFA</color>
+    <color name="colorPrimary">#4267b2</color>
+    <color name="colorPrimaryDark">#2f477a</color>
+    <color name="colorAccent">#4080ff</color>
+    <color name="colorBackground">#dcdee3</color>
+    <color name="cardBackground">#ffffff</color>
+    <color name="lineColor">#eaeaea</color>
+    <color name="imageColor">#616770</color>
+    <color name="pressedColor">#3263C6</color>
 </resources>

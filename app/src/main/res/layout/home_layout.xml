@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardBackground"
     android:padding="16dp">
 
     <ImageView
@@ -29,6 +30,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="0"
+                android:background="@color/lineColor"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:padding="10dp"
                 android:layout_weight="1">
@@ -39,9 +46,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:layout_margin="2dp"
-                    android:background="@drawable/simple_button"
-                    android:text="학사일정"/>
+                    android:background="@color/cardBackground"
+                    android:text="학사일정"
+                    android:textColor="@color/colorAccent"/>
 
                 <Button
                     android:id="@+id/info_btn"
@@ -49,9 +56,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:layout_margin="2dp"
-                    android:background="@drawable/simple_button"
-                    android:text="학교현황"/>
+                    android:background="@color/cardBackground"
+                    android:text="학교현황"
+                    android:textColor="@color/colorAccent"/>
 
                 <Button
                     android:id="@+id/road_btn"
@@ -59,9 +66,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:layout_margin="2dp"
-                    android:background="@drawable/simple_button"
-                    android:text="길찾기"/>
+                    android:background="@color/cardBackground"
+                    android:text="길찾기"
+                    android:textColor="@color/colorAccent"/>
 
             </LinearLayout>
 
